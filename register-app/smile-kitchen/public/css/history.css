@@ -1,0 +1,205 @@
+/* history.css */
+
+/* =========================================
+   ポップアップ（モーダル）の基本設定
+   ========================================= */
+
+#popup {
+  display: none; /* label でコントロールするので input は非表示 */
+}
+
+/* ポップアップの背景（黒い半透明） */
+#popup:checked ~ .popup-overlay {
+  display: block;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.44); /* #00000070 相当 */
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+#popup:checked ~ .regi-header {
+  z-index: -2;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background-color: #ffffff;
+}
+
+/* ポップアップウィンドウ本体 */
+.popup-window {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 90vw;
+  max-width: 800px;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 3px solid #369ae3;
+  border-radius: 10px;
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.popup-close {
+  display: inline-block;
+  align-self: flex-start;
+  cursor: pointer;
+  font-size: 32px;
+  color: #369ae3;
+  margin-bottom: 10px; /* 少し余白を追加 */
+}
+
+
+/* =========================================
+   レイアウト・共通エリア
+   ========================================= */
+
+.fixed-area {
+  flex-shrink: 0;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+
+/* =========================================
+   テーブルスタイル（共通・統合）
+   ========================================= */
+
+/* セルの基本設定 */
+.item-list-table th, .item-list-table td,
+#salesTable th, #salesTable td {
+  border: 1px solid #999999;
+  text-align: center;
+  width: 25%; /* 列幅を均等に */
+}
+
+/* 偶数行の色変え */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* --- 高さ・余白の調整（コンパクト化） --- */
+
+/* 行の高さ（見出し・データ共通） */
+#salesTable thead tr, .item-list-table thead tr,
+#salesTable tbody tr, .item-list-table tbody tr {
+  height: 50px; /* 元の5pxは誤りと思われるため50pxに修正 */
+}
+
+/* セルの余白（見出し） */
+#salesTable thead th, .item-list-table thead th {
+  padding: 5px 0;
+}
+
+/* セルの余白（データ） */
+#salesTable tbody td, .item-list-table tbody td {
+  padding: 8px 0;
+}
+
+
+/* =========================================
+   ボタン・フォーム類
+   ========================================= */
+
+/* 検索ボタン */
+button.search {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 削除ボタン */
+.delete-button {
+  background-color: #fbb03b;
+  color: #333333;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ブラウザ標準のカレンダーアイコンを非表示 */
+.date-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* --- グラフ表示ボタン（アイコン化） --- */
+.flex-box .popup-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* サイズと枠線をカレンダーに合わせる */
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 3px solid #4da3ff;
+  border-radius: 10px;
+  
+  padding: 0;
+  cursor: pointer;
+  margin-left: 0; /* 必要に応じて調整 */
+}
+
+/* ボタン内のアイコン画像サイズ制御 */
+.flex-box .popup-open img {
+  width: 35px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* =========================================
+  レスポンシブ設定（PC・大型画面 1079px以上）
+   ========================================= */
+
+@media screen and (min-width: 1079px) {
+  
+  /* テーブルの余白を少し広げる */
+  #salesTable thead th, .item-list-table thead th {
+    padding: 10px 0;
+  }
+  #salesTable tbody td, .item-list-table tbody td {
+    padding: 12px 0;
+  }
+
+  /* グラフボタンを大きくする */
+  .flex-box .popup-open {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .flex-box .popup-open img {
+    width: 50px;
+  }
+}

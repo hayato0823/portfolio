@@ -1,0 +1,257 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden; /* ブラウザ全体のスクロールを禁止 */
+}
+
+.main-content {
+  height: 100vh;
+  /* 【修正】120px -> 100px に短縮（ヘッダー下の余白を詰める） */
+  padding-top: 100px; 
+  display: flex;
+  flex-direction: column;
+}
+
+/*　検索部分　*/
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  /* 【修正】上下の余白を20px -> 10pxに減らし、テーブルエリアを広げる */
+  padding: 10px 20px; 
+  flex-shrink: 0; /* 検索ボックスが潰れないように固定 */
+}
+
+.date-box {
+  display: flex;
+  align-items: center;
+  border: 3px solid #4da3ff;
+  border-radius: 10px;
+  height: 60px;
+  width: 280px;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+}
+
+.date-icon {
+  width: 65px;
+  height: 45px;
+  padding-left: 10px;
+}
+
+.date-input {
+  width: 190px;
+  padding-left: 15px;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  color: #369ae3;
+  cursor: pointer;
+}
+
+.date-input::placeholder {
+  color: #369ae3;
+}
+
+.search-form {
+  height: 65px;
+  width: 420px;
+  padding-left: 15px;
+  font-size: 24px;
+  border: 3px solid #4da3ff;
+  border-radius: 10px;
+}
+
+input::-ms-clear {
+  visibility:hidden
+}
+
+.search-btn {
+  height: 65px;
+  width: 150px;
+  margin: 0 0 0 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #4da3ff;
+  color: #fff;
+  font-size: 28px;
+}
+
+
+
+/*　テーブル部分　*/
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 列幅を固定して割合で調整 */
+}
+
+/* テーブル全体のレイアウト設定 */
+.sticky_table {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* 残りの画面いっぱいに広げる */
+  width: 100%;
+  overflow: hidden; /* テーブルの外枠はスクロールさせない */
+}
+
+/* 見出しを固定 */
+.sticky_table thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  flex-shrink: 0;
+}
+
+/* データをスクロール可能にする */
+.sticky_table tbody {
+  display: block; /* ブロック要素にすることでスクロール可能に */
+  flex: 1;
+  overflow-y: auto; /* 縦スクロールを表示 */
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 各行をテーブル形式で表示 */
+.sticky_table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead th {
+  padding: 10px 0 10px 0;
+  font-size: 28px;
+  font-weight: normal;
+  background: #c3e1f7;
+  color: #333333;
+  border-bottom: 2px solid #999999;
+  border-right: 2px solid #999999;
+}
+
+/* --- 列幅の指定（theadとtbodyで共通にする） --- */
+th:nth-child(1), td:nth-child(1) { width: 15%; }
+th:nth-child(2), td:nth-child(2) { width: 30%; }
+th:nth-child(3), td:nth-child(3) { width: 15%; }
+th:nth-child(4), td:nth-child(4) { width: 20%; }
+th:nth-child(5), td:nth-child(5) { width: 20%; }
+
+td {
+  padding: 15px 0 15px 0;
+  font-size: 24px;
+  border-right: 2px solid #999999;
+  white-space: normal;          /* 折り返しを許可 */
+  word-wrap: break-word;        /* 長い単語を折り返す */
+  overflow-wrap: break-word;    /* 長い単語でも改行 */
+}
+
+/* 最後の列の右線は消す（見た目を整える） */
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+tbody {
+    text-align: center;
+    color: #333333;
+}
+
+/* 偶数行を濃いグレー */
+tbody tr:nth-child(even) {
+  background-color: #e6e6e6;
+}
+
+/* 奇数行は薄いグレー */
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr {
+  height: 75px;
+}
+
+.delete-btn {
+  height: 50px;
+  width: 100px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: 1px solid #333333;
+  background-color: #c1272d;
+  color: #fff;
+
+}
+
+@media screen and (min-width: 1079px) {
+	/* 1079px以上に適用されるCSS */
+  /*　検索部分　*/
+  .main-content {
+    /* 【修正】220px -> 190px に短縮 */
+    padding-top: 190px;
+  }
+  .flex-box {
+    /* 【修正】上下の余白を30px -> 15pxに減らす */
+    padding: 15px 30px;
+  }
+  .date-box {
+    height: 80px;
+    width: 300px;
+  }
+  .date-icon {
+    padding-left: 20px;
+  }
+  .date-input {
+    width: 200px;
+    padding-left: 20px;
+    font-size: 32px;
+  }
+  .search-form {
+    height: 85px;
+    width: 440px;
+    font-size: 32px;
+  }
+  .search-btn {
+    height: 85px;
+    width: 160px;
+    margin: 0 0 0 20px;
+    font-size: 32px;
+  }
+
+
+  /*　テーブル部分　*/
+  thead th {
+    padding: 20px 0 20px 0;
+    font-size: 38px;
+    border-bottom: 3px solid #999999;
+    border-right: 3px solid #999999;
+  }
+  td {
+    padding: 20px 0 20px 0;
+    font-size: 30px;
+    border-right: 3px solid #999999;
+  }
+  .delete-btn {
+    height: 68px;
+    width: 180px;
+    font-size: 30px;
+    border: 2px solid #333333;
+  }
+}
+
+@media screen and (max-height: 1045px) {
+	/* 1045px以下に適用されるCSS */
+  .main-content {
+    height: 100vh;
+    /* 【修正】150px -> 130px に短縮 */
+    padding-top: 130px;
+  }
+}
+/* ブラウザ標準のカレンダーアイコンを非表示 */
+.date-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

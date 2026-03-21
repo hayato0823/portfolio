@@ -1,0 +1,25 @@
+2025-06-13 01:20:13 startup archives unpack
+2025-06-13 01:20:14 install unzip:amd64 <none> 6.0-28
+2025-06-13 01:20:14 status half-installed unzip:amd64 6.0-28
+2025-06-13 01:20:14 status unpacked unzip:amd64 6.0-28
+2025-06-13 01:20:14 startup packages configure
+2025-06-13 01:20:14 configure unzip:amd64 6.0-28 <none>
+2025-06-13 01:20:14 status unpacked unzip:amd64 6.0-28
+2025-06-13 01:20:14 status half-configured unzip:amd64 6.0-28
+2025-06-13 01:20:14 status installed unzip:amd64 6.0-28
+2025-06-13 01:20:28 startup archives unpack
+2025-06-13 01:20:28 install p7zip:amd64 <none> 16.02+dfsg-8
+2025-06-13 01:20:28 status half-installed p7zip:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status unpacked p7zip:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 install p7zip-full:amd64 <none> 16.02+dfsg-8
+2025-06-13 01:20:28 status half-installed p7zip-full:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status unpacked p7zip-full:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 startup packages configure
+2025-06-13 01:20:28 configure p7zip:amd64 16.02+dfsg-8 <none>
+2025-06-13 01:20:28 status unpacked p7zip:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status half-configured p7zip:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status installed p7zip:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 configure p7zip-full:amd64 16.02+dfsg-8 <none>
+2025-06-13 01:20:28 status unpacked p7zip-full:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status half-configured p7zip-full:amd64 16.02+dfsg-8
+2025-06-13 01:20:28 status installed p7zip-full:amd64 16.02+dfsg-8

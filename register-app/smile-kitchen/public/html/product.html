@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/split.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/product.css">
+    <title>Product</title>
+</head>
+
+<body class="split-page">
+    <header>
+        商品登録
+        <nav class="menu">
+            <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <ul>
+              <li><a href="#">ホーム</a></li>
+              <li><a href="#">会計業務</a></li>
+              <li><a href="#">商品登録</a></li>
+              <li><a href="#">レジ開け/締め</a></li>
+              <li><a href="#">データ管理</a></li>
+            </ul>
+          </nav>
+    </header>
+    <main class="split-55">
+        <!-- 左画面 -->
+        <div class="split-left-55">
+            <div class="split-left__inner">
+                <div class="input-container">
+                    <div class="input-product-name">
+                        <h2>商品名</h2>
+                        <input type="text" id="product-name" name="product-name" placeholder="例：りんご" required>
+                        <div class="error-message">＊商品名を入力してください</div>
+                    </div>
+                    <div class="input-price">
+                        <h2>値段</h2>
+                        <input type="number" id="price" name="price" placeholder="例：150" required>
+                        <div class="error-message">＊値段を入力してください</div>
+                    </div>
+                    <button class="enter" onclick="">登録</button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- 右画面 -->
+        <div class="split-right-55">
+            <div class="split-right__inner">
+                <div class="scroll-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>商品名</th>
+                                <th>値段</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>商品名A</td>
+                                <td>100</td>
+                                <td>
+                                    <button class="edit" onclick="">編集</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>商品名B</td>
+                                <td>100</td>
+                                <td>
+                                    <button class="edit" onclick="">編集</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>あいうえおかきくけこさしすせそたちつ</td>
+                                <td>10000</td>
+                                <td>
+                                    <button class="edit" onclick="">編集</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- スクロール部分長さ出しダミー -->
+                    <p style="margin-bottom: 2000px;"></p>
+                </div>    
+            </div>
+
+        </div>
+
+
+    </main>
+
+    
+</body>
+</html>

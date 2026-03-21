@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../css/regi.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/split.css">
+    <title>Regi</title>
+</head>
+
+<body class="split-page">
+  <main class="split-64">
+    <input type="checkbox" id="popup">
+    <!-- ポップアップ -->
+    <div class="popup-overlay">
+      <div class="popup-window">
+        <!-- ポップアップ中身（閉じる）-->
+        <label class="popup-close" for="popup">≪ 戻る</label>
+        <!-- ポップアップ中身（電卓部分）-->
+        <div id="calculator">
+          <div class="calc-row">
+            <div class="calc-label">小計</div>
+            <div class="calc-value" id="subtotal-value">000円</div>
+          </div>
+          <div class="calc-row-paid">
+            <div class="calc-label">預かり</div>
+            <div class="calc-value" id="paid-value">000円</div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-label">おつり</div>
+            <div class="calc-value" id="change-value">000円</div>
+          </div>
+          <table>
+            <tr>
+              <td><button class="square" onclick="appendToDisplay('7')">7</button></td>
+              <td><button class="square" onclick="appendToDisplay('8')">8</button></td>
+              <td><button class="square" onclick="appendToDisplay('9')">9</button></td>
+              <td><button class="red" onclick="clearDisplay()">C</button></td>
+            </tr>
+            <tr>
+              <td><button class="square" onclick="appendToDisplay('4')">4</button></td>
+              <td><button class="square" onclick="appendToDisplay('5')">5</button></td>
+              <td><button class="square" onclick="appendToDisplay('6')">6</button></td>
+              <td><button class="white" onclick="appendToDisplay()">万券</button></td>
+            </tr>
+            <tr>
+              <td><button class="square" onclick="appendToDisplay('1')">1</button></td>
+              <td><button class="square" onclick="appendToDisplay('2')">2</button></td>
+              <td><button class="square" onclick="appendToDisplay('3')">3</button></td>
+              <td><button class="yellow" onclick="appendToDisplay()">クレ</button></td>
+            </tr>
+            <tr>
+              <td><button class="square" onclick="appendToDisplay('0')">0</button></td>
+              <td><button class="square" onclick="appendToDisplay('00')">00</button></td>
+              <td><button class="square" onclick="appendToDisplay('.')">.</button></td>
+              <td><button class="blue" onclick="calculateResult()">現計</button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- 左画面 -->
+    <div class="split-left-64">
+      <div class="split-left__inner">
+        <div class="vertical-list">
+          <div class="sum">
+            <span class="label">合計数</span>
+            <span class="number" id="total-count">3</span>
+            <span class="unit-point">点</span>
+          </div>
+          <div class="product-list" id="productList">
+            <div class="item">
+              <span class="label">商品A</span>
+              <span class="item-number" id="item-count">1</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品B</span>
+              <span class="item-number" id="item-count">10</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品C</span>
+              <span class="item-number" id="item-count">100</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品D</span>
+              <span class="item-number" id="item-count">200</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品E</span>
+              <span class="item-number" id="item-count">11</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品F</span>
+              <span class="item-number" id="item-count">12</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+            <div class="item">
+              <span class="label">商品G</span>
+              <span class="item-number" id="item-count">1</span>
+              <a href="" class="unit-cancel css-x" id="item-cancel" onclick=""></a>
+            </div>
+          </div>
+          <div class="subtotal">
+            <span class="label">小計</span>
+            <span class="number" id="subtotal-count">300000</span>
+            <span class="unit-yen">円</span>
+          </div>
+          
+          <label class="popup-open" for="popup">会計へ進む</label>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- 右画面 -->
+    <div class="split-right-64">
+      <div class="split-right__inner">
+        <div class="regi-header"></div>
+        <nav class="menu">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">会計業務</a></li>
+            <li><a href="#">商品登録</a></li>
+            <li><a href="#">レジ開け/締め</a></li>
+            <li><a href="#">データ管理</a></li>
+          </ul>
+        </nav>
+        <div class="container">
+          <a href="" class="btn-product" onclick="">
+              <span class="btn-title">商品名</span>
+              <span class="btn-description">〇〇〇〇円</span>
+          </a>
+          <a href="" class="btn-product" onclick="">
+            <span class="btn-title">商品名</span>
+            <span class="btn-description">〇〇〇〇円</span>
+        </a>
+        <a href="" class="btn-product" onclick="">
+          <span class="btn-title">商品名</span>
+          <span class="btn-description">〇〇〇〇円</span>
+      </a>
+      <a href="" class="btn-product" onclick="">
+        <span class="btn-title">商品名</span>
+        <span class="btn-description">〇〇〇〇円</span>
+    </a>
+        </div>
+          <br><br>
+        <!-- スクロール部分長さ出しダミー -->
+        <div style="height: 900px;"></div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

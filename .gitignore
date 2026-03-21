@@ -1,0 +1,7 @@
+docker/db/data/
+infra/db/data/
+
+log/xdebug.log
+vendor/
+node_modules/
+.env

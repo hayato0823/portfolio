@@ -1,0 +1,39 @@
+
+services:
+  app-sdt:
+    container_name: laravel-app
+    build: ./docker/php
+    depends_on:
+      - mysql-db
+    volumes:
+      - ./:/var/www
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./log:/var/log
+
+  nginx-sdt:
+    container_name: nginx-web
+    image: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - app-sdt
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+  # .envファイルの「DB_HOST」とサービス名を合わせる
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      # .envファイルの「DB_DATABASE」とMYSQL_DATABASEを合わせる
+      MYSQL_DATABASE: laravel
+      TZ: "Asia/Tokyo"
+      # 文字コード指定
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"

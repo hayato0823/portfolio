@@ -1,0 +1,25 @@
+
+/* ブラウザの既定余白でズレないように */
+html, body { margin: 0; }
+
+/* グラフを常に中央に配置 */
+.chart-wrap {
+  display: flex;
+  justify-content: center;   /* 横中央 */
+  align-items: center;       /* 縦中央にしたい場合は親に高さを付ける */
+}
+
+/* グラフの枠（サイズはお好みで） */
+#chartArea {
+  width: clamp(320px, 80vw, 400px);  /* 画面に応じて伸縮＋上限 */
+  height: 50vh;                      /* ここで高さを決定 */
+  margin: 24px auto;                 /* 念のため中央寄せ */
+  overflow: hidden;                   /* レジェンドで横はみ出し防止 */
+}
+
+/* Canvas をブロック化＆親サイズにフィット */
+#itemChart {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}

@@ -1,0 +1,152 @@
+/* スプリットデザイン */
+
+.split-page {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; /* 全体のスクロールは無効にして右だけスクロール */
+}
+    
+.split-64 {
+  display: flex;
+  height: 100vh;
+}
+
+.split-55 {
+  display: flex;
+  height: 100vh;
+  padding-top: 120px;
+  box-sizing: border-box;
+}
+  
+.split-left-64 {
+  width: 40%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  padding: 0px;
+  box-sizing: border-box;
+  border-right: 2px solid #999999;
+}
+  
+.split-left-55 {
+  width: 50%;
+  position: fixed;
+  top: 120px;
+  left: 0;
+  height: calc(100vh - 120px);
+  padding: 0px;
+  box-sizing: border-box;
+  border-right: 2px solid #999999;
+}
+  
+
+.split-left__inner {
+  display: grid;
+  position: relative;
+  height: 100%;
+  margin: 0; 
+  padding: 0; 
+}
+  
+.split-right-64 {
+  margin-left: 40%;
+  width: 60%;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 0 30px 30px 30px;
+  box-sizing: border-box;
+}
+
+.split-right-55 {
+  display: flex;
+  margin-left: 50%;
+  width: 50%;
+  height: calc(100vh - 120px);
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+  
+.split-right__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* --- PC・大画面向け調整 --- */
+@media screen and (min-width: 1079px) {
+  /* 1079px以上に適用されるCSS */
+  .split-55 {
+    padding-top: 220px;
+  }
+  .split-left-55 {
+    top: 220px;
+    height: calc(100vh - 220px);
+  }
+  .split-right-55 {
+    height: calc(100vh - 220px);
+  }
+}
+
+@media screen and (max-height: 1045px) {
+	/* 1045px以下に適用されるCSS */
+  .split-page {
+    height: 1044px;
+  }
+  .split-55 {
+    padding-top: 150px;
+  }
+  .split-left-55 {
+    top: 150px;
+    height: calc(100vh - 150px);
+  }
+  .split-right-55 {
+    height: calc(100vh - 150px);
+  }
+}
+
+/* --- 【追加】モバイル・タブレット向けレスポンシブ対応 --- */
+/* 768px以下（一般的なタブレット縦持ち・スマホ）の場合 */
+@media screen and (max-width: 768px) {
+  
+  /* ページ全体のスクロール制限を解除 */
+  .split-page {
+    height: auto;
+    overflow: auto;
+  }
+
+  /* コンテナを縦並び（ブロック要素）に変更し、高さ固定を解除 */
+  .split-64,
+  .split-55 {
+    display: block;
+    height: auto;
+    padding-top: 80px; /* スマホ用にヘッダー余白を縮小（必要に応じて調整してください） */
+  }
+
+  /* 左側エリア（上部に配置） */
+  .split-left-64,
+  .split-left-55 {
+    width: 100%;
+    position: relative; /* 固定配置を解除 */
+    top: 0;
+    left: 0;
+    height: auto; /* コンテンツに合わせて高さを可変に */
+    border-right: none;
+    border-bottom: 2px solid #999999; /* 区切り線を右から下へ移動 */
+  }
+
+  /* 右側エリア（下部に配置） */
+  .split-right-64,
+  .split-right-55 {
+    width: 100%;
+    margin-left: 0; /* 左側の固定スペース分を解除 */
+    height: auto;
+    overflow-y: visible; /* 内部スクロールではなく全体スクロールに */
+    padding: 20px; /* スマホ向けに余白を調整 */
+  }
+
+  /* split-55特有のレイアウト崩れ防止 */
+  .split-right-55 {
+    display: block; /* Flex解除 */
+  }
+}

@@ -1,0 +1,95 @@
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  background-color: #f8f8f8;
+}
+
+.container {
+  width: 95%;
+  max-width: 900px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 2px solid #ccc;
+  padding: 10px 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.menu-icon div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.blue {
+  background-color: #e0f0ff;
+}
+
+input[type="number"] {
+  width: 50px;
+  text-align: center;
+  border: 2px solid #00aaff;
+  border-radius: 5px;
+}
+
+.right-panel {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.total-label {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.total-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+button.ok {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 10px 40px;
+  font-size: 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.reset {
+  background-color: #d62828;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}

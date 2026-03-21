@@ -1,0 +1,42 @@
+/* header.css */
+
+/* 全体の基本設定 */
+:root {
+  /* 80px × 0.75 = 60px */
+  --header-height: 60px;      /* スマホ・小タブレット用の高さ */
+  
+  /* 120px × 0.75 = 90px */
+  --header-height-lg: 90px;   /* 大型タブレット・PC用の高さ */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  /* 高さの変数を適用 */
+  height: var(--header-height);
+  
+  box-sizing: border-box;
+  background-color: #fff;
+  border-bottom: 2px solid #999999;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  
+  /* 文字サイズを元の約75%に調整 */
+  /* 最小 1.1rem (約17.6px) 〜 推奨 3vw 〜 最大 2.2rem (約35px) */
+  font-size: clamp(1.1rem, 3vw, 2.2rem);
+  font-weight: normal;
+  color: #333;
+}
+
+/* 大型タブレット・PC以上 */
+@media screen and (min-width: 1024px) {
+  header {
+    height: var(--header-height-lg);
+  }
+}

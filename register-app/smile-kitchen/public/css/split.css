@@ -1,0 +1,97 @@
+/* split.css */
+
+/* ページの基本設定 */
+.split-page {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* モバイルブラウザのアドレスバー対策 */
+  overflow: hidden; /* 大枠のスクロール禁止 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* .split-55: ヘッダーの下のメインエリア */
+.split-55 {
+  display: flex;
+  width: 100%;
+  
+  /* 【修正】ヘッダーの高さ変数(60px)を使用 */
+  margin-top: var(--header-height); 
+  
+  /* 【修正】全体の高さ(100dvh)からヘッダー分を引く */
+  height: calc(100dvh - var(--header-height)); 
+  
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 左画面コンテナ */
+.split-left-55 {
+  width: 50%;
+  height: 100%; 
+  overflow-y: auto; 
+  border-right: 2px solid #999999;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.split-left__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+}
+
+/* 右画面コンテナ */
+.split-right-55 {
+  width: 50%;
+  height: 100%;
+  
+  /* テーブルヘッダー固定用にoverflow制御 */
+  overflow: hidden; 
+  
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.split-right__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+/* --- レスポンシブ調整 --- */
+
+/* 大型デバイス用（1024px以上） */
+@media screen and (min-width: 1024px) {
+  .split-55 {
+    /* 【修正】PC用ヘッダー高さ(90px)を使用 */
+    margin-top: var(--header-height-lg);
+    
+    /* 【修正】高さ計算もPC用変数に合わせる */
+    height: calc(100dvh - var(--header-height-lg));
+  }
+}
+
+/* スマホ・小型タブレット縦持ち用（768px以下） */
+@media screen and (max-width: 768px) {
+  .split-55 {
+    flex-direction: column; /* 縦並びにする */
+    /* ここではmargin-topの上書きは不要（基本設定のvar(--header-height)が効くため） */
+  }
+
+  .split-left-55 {
+    width: 100%;
+    height: 40%; /* 上半分を入力エリアに */
+    border-right: none;
+    border-bottom: 2px solid #999;
+  }
+
+  .split-right-55 {
+    width: 100%;
+    height: 60%; /* 下半分をリストに */
+  }
+}

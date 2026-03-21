@@ -1,0 +1,151 @@
+/* --- 左画面（テーブル） --- */
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+tbody {
+    width: 100%;
+    height: 100%;
+    display: table-row-group;
+}
+
+/* 10行均等割 */
+tr {
+    height: 10%; 
+}
+
+td {
+    padding: 0 5px;
+    text-align: right;
+    font-size: 28px;
+    color: #333333;
+    vertical-align: middle;
+}
+
+/* 背景色 */
+tbody tr:nth-child(even) { background-color: #c3e1f7; }
+tbody tr:nth-child(odd)  { background-color: #f1f8fd; }
+
+/* 入力欄 */
+input {
+    height: 85%; 
+    width: 100%;
+    padding: 0; 
+    text-align: center;
+    font-size: 28px;
+    border: 3px solid #369ae3;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* 列幅 */
+.money-choices { width: 20%; }
+.plural        { width: 20%; }
+.singular      { width: 30%; }
+.typeToatal    { width: 30%; padding-right: 10px; color: #f7931e; }
+
+.input-plural   { max-width: 100px; }
+.input-singular { max-width: 180px; }
+
+
+/* --- 右画面（結果・ボタン） --- */
+
+.result-box {
+    /* 画面の「上4割」を結果表示に使う（レジ開けと同じ比率） */
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* レジ締めは3行あるので、行間を少し空ける */
+    gap: 15px; 
+    width: 100%;
+}
+
+.result-title {
+    margin: 0;
+    font-size: 28px;
+    color: #333333;
+    text-align: center;
+    width: 100%; /* 幅いっぱいに使って中央揃え */
+}
+
+.result-number {
+    margin-top: 5px;
+    text-align: right;
+    font-weight: normal;
+    padding-right: 10%; /* 右端に寄りすぎないように調整 */
+}
+
+/* レジ締め画面用の「差異（赤字）」スタイル */
+.difference-number {
+    margin-top: 5px;
+    text-align: right;
+    font-weight: bold;
+    color: #c1272d; /* 赤色 */
+    padding-right: 10%;
+}
+
+.flex-box-btn {
+    /* 画面の「下6割」をボタンエリアに使う（レジ開けと同じ比率） */
+    flex: 3; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    gap: 15px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+/* ボタン共通 */
+.confirm-btn, .reset-btn {
+    width: 80%;
+    max-width: 280px;
+    
+    /* エリア内の35%の高さを使う */
+    height: 35%;
+    max-height: 100px;
+    
+    margin: 0;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.confirm-btn { font-size: 36px; background-color: #369ae3; }
+.reset-btn   { font-size: 28px; background-color: #c1272d; }
+
+
+/* --- PC・大型モニター用 (1079px以上) --- */
+@media screen and (min-width: 1079px) {
+    td { font-size: 38px; }
+    
+    input { 
+        font-size: 38px; 
+        border: 4px solid #369ae3;
+    }
+    
+    .result-title { font-size: 38px; }
+    .confirm-btn  { font-size: 46px; }
+    .reset-btn    { font-size: 38px; }
+    
+    /* 大型画面なら行間をもう少し広げる */
+    .result-box { gap: 20px; }
+}
+
+/* 高さ不足時 (1045px以下) */
+@media screen and (max-height: 1045px) {
+    td    { font-size: 34px; }
+    input { font-size: 34px; border-width: 3px; }
+    /* 狭い場合は行間を詰める */
+    .result-box { gap: 5px; }
+}

@@ -1,0 +1,72 @@
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- コンテナ設定 --- */
+.button-grid {
+    display: flex;
+    /* スマホ（基本）は縦並びにする */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* 縦並びのときの間隔 */
+    height: 100%;
+    width: 100%;
+    padding: 20px; /* 画面端に少し余白を持たせる */
+    box-sizing: border-box; /* paddingを含めたサイズ計算にする */
+}
+
+/* --- ボタン共通設定 --- */
+.select-btn {
+    /* 幅を固定pxではなく%にする */
+    width: 80%;
+    /* ただし、広がりすぎないように最大幅を指定 */
+    max-width: 400px;
+    height: 150px; /* スマホでは少し高さを抑える */
+    font-size: 32px; /* スマホでは少し文字を小さく */
+    border: none;
+    border-radius: 10px;
+    color: #333333;
+    background-color: #e6e6e6;
+    cursor: pointer;
+    transition: background-color 0.3s; /* ホバー時のアニメーション用（任意） */
+}
+
+.select-btn:active {
+    background-color: #d4d4d4;
+}
+
+/* --- タブレット・一般的なPC向け (768px以上) --- */
+@media screen and (min-width: 768px) {
+    .button-grid {
+        /* 横並びに戻す */
+        flex-direction: row;
+        gap: 60px;
+    }
+
+    .select-btn {
+        width: 350px; /* 固定幅に戻す、あるいは % でもOK */
+        height: 220px;
+        font-size: 45px;
+    }
+}
+
+/* --- 大型モニター向け (既存の1079px以上) --- */
+@media screen and (min-width: 1079px) {
+    .back-btn {
+        margin: 50px 0 0 50px;
+        font-size: 55px;
+    }
+
+    .button-grid {
+        gap: 150px; /* 間隔を広げる */
+    }
+    
+    .select-btn {
+        width: 500px; /* さらに大きく */
+        max-width: none; /* 最大幅制限を解除 */
+        height: 420px;
+        font-size: 55px;
+    }
+}

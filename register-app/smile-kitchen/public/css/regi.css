@@ -1,0 +1,454 @@
+/* =========================================
+   1. ベーススタイル (PC・基本レイアウト)
+   ========================================= */
+
+/* 右画面：商品選択 */
+.regi-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: white;
+  height: 130px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1;
+  justify-content: center; 
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.btn-product {
+  display: inline-block;
+  text-decoration: none;
+  align-content: center;
+  font-size: 20px;
+  padding: 20px;
+  height: auto;
+  width: 130px;
+  border-radius: 10px;
+  background-color: #E6E6E6;
+  color: #333333;
+}
+
+.btn-title {
+  display: block;
+  font-weight: bold;
+  color: #333333;
+}
+
+.btn-description {
+  display: inline-block;
+  height: 30px;
+  padding: 0.1rem 0rem;
+  margin-top: auto;
+  color: #333333;
+  border-bottom: 2px solid #369ae3;
+}
+
+/* レジスター画面（左画面） */
+/* 
+.vertical-list {
+  display: grid;
+  width: 100%; 
+  margin: 0px;
+} */
+.vertical-list {
+  display: flex;             /* grid から flex に変更 */
+  flex-direction: column;    /* 縦並びにする */
+  height: 100vh;             /* 画面の高さに合わせる */
+  width: 100%;
+  margin: 0px;
+}
+ /* 40px × 7行を想定 */
+  /* 7行以上でスクロール */
+/* 
+.product-list {
+  height: 385px;
+  overflow-y: auto; 
+  box-sizing: border-box;
+} */
+
+.product-list {
+  flex: 1;                   /* 余白をすべてこのエリアに割り当てる */
+  overflow-y: auto;
+  box-sizing: border-box;
+  /* height: 385px; は削除またはコメントアウト */
+}
+
+.sum {
+  padding: 30px 15px;
+  border-bottom: 2px solid #b3b3b3;
+  font-size: 34px;
+  color: #333333;
+}
+
+.number {
+  display: inline-block;
+  font-family: monospace;
+  margin-left: 15px;
+}
+
+/* 商品リストエリア（PC） */
+.product-list {
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* リストアイテム */
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 2px solid #b3b3b3;
+  font-size: 28px;
+  color: #333333;
+}
+
+.item .label {
+  width: 200px;
+  margin-right: auto;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+.item .item-number {
+  font-family: monospace;
+  margin-right: 20px;
+}
+
+/* ×ボタン（PC用初期値） */
+.item .unit-cancel {
+  width: 34px;
+  height: 34px;
+  border: 2.5px solid red;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0; /* 縮小禁止 */
+}
+
+.css-x::before,
+.css-x::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 60%;
+  height: 2.5px;
+  background: red;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border-radius: 2px;
+}
+
+.css-x::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.subtotal {
+  padding: 58px 25px;
+  border-bottom: 2px solid #b3b3b3;
+  font-size: 45px;
+  color: #333333;
+}
+
+.unit-yen {
+  margin-left: 60px;
+}
+
+/* ポップアップ・電卓関連 */
+#popup { display: none; }
+
+.popup-open {
+  display: grid;
+  place-items: center;
+  padding: 15px 0;
+  font-size: 50px;
+  color: #ffffff;
+  background-color: #369ae3;
+  cursor: pointer;
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#popup:checked ~ .popup-overlay { display: block; }
+#popup:checked ~ .regi-header { z-index: -2; }
+
+.popup-window {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 90vw;
+  max-width: 540px;
+  background-color: #ffffff;
+  border: 3px solid #369ae3;
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.popup-close {
+  align-self: flex-start;
+  cursor: pointer;
+  font-size: 32px;
+  color: #369ae3;
+}
+
+/* 電卓内部レイアウト */
+.calc-row, .calc-row-paid {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 2px solid #b3b3b3;
+  padding: 10px 0;
+  font-size: 32px;
+  color: #333333;
+}
+
+#paid-value { font-size: 48px; }
+
+#calculator { width: 100%; }
+#calculator table {
+  width: 100%;
+  border-spacing: 10px;
+  border-collapse: separate;
+  margin-top: 15px;
+}
+#calculator td { height: 60px; }
+#calculator button {
+  width: 100%;
+  height: 100%;
+  font-size: 36px;
+  background-color: #ffffff;
+  color: #369ae3;
+  border: 3px solid #369ae3;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#calculator button.red { background-color: #c1272d; color: white; border-color: #c1272d; }
+#calculator button.white { background-color: white; color: #369ae3; }
+#calculator button.yellow { background-color: #fff157; color: #333333; border-color: #fff157; }
+#calculator button.blue { background-color: #369ae3; color: white; }
+
+
+/* =========================================
+  2. スマホ・タブレット向け最適化 (768px以下)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* --- レイアウト構造修正 --- */
+  .split-left__inner {
+    display: flex;       /* Grid解除 */
+    flex-direction: column;
+    height: 100%;        /* 高さいっぱい使う */
+    overflow: hidden;    /* はみ出し防止 */
+  }
+
+  .vertical-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* --- 1. 余白削減（会計ボタンを表示させるため） --- */
+  
+  /* 合計数エリア */
+  .sum {
+    flex-shrink: 0;        /* 縮小禁止 */
+    padding: 10px 15px;    /* 30px→10pxに削減 */
+    font-size: 20px;       /* 文字サイズ調整 */
+    height: auto;
+  }
+  
+  /* 小計エリア（ここが一番無駄なスペースでした） */
+  .subtotal {
+    flex-shrink: 0;        /* 縮小禁止 */
+    padding: 10px 15px;    /* 58px→10pxに削減 */
+    font-size: 24px;
+    height: auto;
+  }
+
+  /* 会計へ進むボタン */
+  .popup-open {
+    flex-shrink: 0;        /* 縮小禁止 */
+    padding: 12px 0;       /* 15px→12pxに削減 */
+    font-size: 22px;
+    height: auto;
+  }
+
+  /* --- 2. リスト表示エリアの最大化 --- */
+  .product-list {
+    flex: 1;               /* 余った高さを全て使う */
+    height: auto !important; /* 固定高さ解除 */
+    max-height: 40vh;      /* ビューポートの高さに応じて最大高さを制限 */
+    overflow-y: auto;      /* 縦スクロール */
+    overflow-x: hidden;    /* 横スクロール禁止 */
+    min-height: 100px;     /* 最低限の高さを確保 */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* --- 3. 明細行と×ボタンの修正 --- */
+  .item {
+    padding: 8px 10px;     /* 上下余白削減 */
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .item .label {
+    flex: 1;               /* 幅を可変に */
+    width: auto;           /* 固定幅解除 */
+    min-width: 0;          /* ★重要: テキストのはみ出し折り返し用 */
+    margin-right: 5px;
+    font-size: 16px;
+  }
+
+  .item .item-number {
+    flex-shrink: 0;
+    margin-right: 5px;
+    font-size: 18px;
+  }
+
+  /* ×ボタンの完全固定（楕円化防止） */
+  .item .unit-cancel {
+    flex-shrink: 0;        /* ★重要: 絶対に縮めない */
+    width: 30px;           /* サイズ固定 */
+    height: 30px;          /* サイズ固定 */
+    min-width: 30px;       /* ★重要: 最小幅も固定 */
+    margin: 0;
+    border-width: 2px;     /* 線を少し細く */
+  }
+  
+  /* ×印の微調整 */
+  .css-x::before, .css-x::after {
+    width: 60%;
+    height: 2px;
+  }
+
+  /* --- 4. 商品ボタンと電卓の調整 --- */
+  .regi-header { height: 70px; }
+  
+  .container {
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .btn-product {
+    width: calc(50% - 10px); /* 隙間を考慮して2列 */
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  /* 電卓ポップアップを画面内に収める */
+  .popup-window {
+    width: 96vw;
+    height: auto;
+    max-height: 90vh;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  #calculator button { font-size: 24px; }
+  #paid-value { font-size: 32px; }
+  .popup-close { font-size: 24px; }
+}
+
+/* =========================================
+   3. iPad Pro・タブレット（横持ち・縦持ち）向け調整
+   範囲: 769px 〜 1200px (iPad Pro 11inch等はここに含まれます)
+   ========================================= */
+@media screen and (min-width: 769px) and (max-width: 1210px) {
+
+  /* --- 左画面をFlexボックス化して高さを自動調整する --- */
+  
+  /* 親コンテナ：画面の高さ一杯を使う */
+  .vertical-list {
+    display: flex;           /* GridからFlexに変更 */
+    flex-direction: column;  /* 縦並び */
+    height: 100%;            /* 親要素(.split-left__inner)の高さを継承 */
+    padding-bottom: 20px;    /* 下端の少しの余白 */
+    box-sizing: border-box;
+  }
+
+  /* リスト部分：余ったスペースを全て使い、あふれたらスクロール */
+  
+  .product-list {
+    flex: 1;               /* 余った高さを全て使う */
+    height: auto !important; /* 固定高さ解除 */
+    max-height: 40vh;      /* ビューポートの高さに応じて最大高さを制限 */
+    overflow-y: auto;      /* 縦スクロール */
+    overflow-x: hidden;    /* 横スクロール禁止 */
+    min-height: 100px;     /* 最低限の高さを確保 */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* --- 上下の要素が潰れないように固定 --- */
+  
+  /* 合計数エリア */
+  .sum {
+    flex-shrink: 0; /* 縮小禁止 */
+    padding: 20px 15px; /* 少し詰める */
+  }
+
+  /* 小計エリア */
+  .subtotal {
+    flex-shrink: 0; /* 縮小禁止 */
+    padding: 20px 15px; /* 余白調整 */
+    margin-top: auto;   /* リストが少ない時でも下部に寄せる */
+  }
+
+  /* 会計ボタン */
+  .popup-open {
+    flex-shrink: 0; /* 縮小禁止 */
+  }
+  /* ポップアップウィンドウ全体のサイズ調整 */
+  .popup-window {
+    width: 85vw;       /* 画面幅の85%に設定 */
+    max-width: 500px;  /* PC(540px)より少しスリムにする */
+    padding: 15px;     /* 内側の余白を少し減らす */
+  }
+
+  /* 電卓のボタン調整 */
+  #calculator button {
+    font-size: 26px;     /* PC(36px)→26px に縮小して収まりを良くする */
+    white-space: nowrap; /* 文字が縦に折り返されないように強制する */
+    padding: 0;          /* ボタン内の余白をリセット */
+  }
+
+  /* 行の高さ調整 */
+  #calculator td {
+    height: 55px;        /* PC(60px)より少し低くする */
+  }
+  
+  /* 入力欄の文字サイズも少し合わせる */
+  .calc-row, .calc-row-paid {
+    font-size: 28px;
+  }
+  #paid-value {
+    font-size: 40px;
+  }
+  
+  /* ▲▲▲ 追加ここまで ▲▲▲ */
+}

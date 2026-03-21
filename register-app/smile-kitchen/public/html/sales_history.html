@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/sales_history.css">
+    <!-- FlatpickrのCSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- FlatpickrのJS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- 日本語にする場合は下記を追記 --> 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_orange.css">
+    <title>Sales History</title>
+</head>
+<body>
+  <header>
+      販売履歴管理
+    <nav class="menu">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="#">ホーム</a></li>
+        <li><a href="#">会計業務</a></li>
+        <li><a href="#">商品登録</a></li>
+        <li><a href="#">レジ開け/締め</a></li>
+        <li><a href="#">データ管理</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="flex-box">
+      <div class="date-box">
+        <img src="../images/calendar.png" class="date-icon" alt="icon">
+        <input type="text" id="datePicker" name="calendar" placeholder="yyyy/mm/dd" class="date-input">
+      </div>
+      <input type="search" class="search-form" name="search" placeholder="IDを入力" required>
+      <button class="search-btn">検索</button>
+    </div>
+    <table class="sticky_table">
+      <thead>
+          <tr>
+            <th>ID</th>  
+            <th>商品名</th>
+            <th>個数</th>
+            <th>合計</th>
+            <th>操作</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>011</td>
+            <td>商品名A</td>
+            <td>1</td>
+            <td>100</td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td>012</td>
+            <td>商品名B</td>
+            <td>1</td>
+            <td>200</td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td>013</td>
+            <td>商品名C</td>
+            <td>2</td>
+            <td>500</td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button class="delete-btn" onclick="">削除</button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </main>
+
+<!--JavaScript-->
+<script>
+flatpickr("#datePicker", {
+    locale: "ja",
+    dateFormat: "Y/m/d",
+    minDate: "2020-01-01",
+    position: "below"
+});
+
+// コンテナ全体をクリックでカレンダーを開く
+document.querySelector(".date-box").addEventListener("click", () => {
+    document.querySelector("#datePicker").focus();
+});
+
+</script>
+
+</body>
+</html>

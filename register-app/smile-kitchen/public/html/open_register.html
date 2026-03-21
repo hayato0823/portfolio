@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>レジ開け</title>
+  <link rel="stylesheet" href="open_register.css">
+</head>
+<body>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  @csrf
+  <div class="container">
+    <header>
+      <h1>レジ開け</h1>
+      <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </header>
+    <table>
+      <tr>
+        <th>金種</th>
+        <th colspan="2">枚数</th>
+        <th>金額</th>
+      </tr>
+      <tr id="money0">
+        <td>¥10,000</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td></td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money1" class="blue">
+        <td>¥5,000</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td></td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money2">
+        <td>¥2,000</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td></td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money3" class="blue">
+        <td>¥1,000</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td></td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money4">
+        <td>¥500</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money5" class="blue">
+        <td>¥100</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money6">
+        <td>¥50</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money7" class="blue">
+        <td>¥10</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money8">
+        <td>¥5</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+      <tr id="money9" class="blue">
+        <td>¥1</td>
+        <td><input type="number" value="0"> 本</td>
+        <td><input type="number" value="0"> 枚</td>
+        <td class="typeToatal">¥ 0</td>
+      </tr>
+    </table>
+
+    <div class="right-panel">
+      <p class="total-label">実ドロア在高</p>
+      <p class="total-value">¥0</p>
+      <button class="ok">OK</button>
+      <button class="reset">リセット</button>
+    </div>
+  </div>
+  <script src="/js/open_register.js"></script>
+</body>
+</html>

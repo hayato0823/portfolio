@@ -1,0 +1,112 @@
+/* --- メニューのスタイル --- */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -120%; /* 確実に隠すために -100% より少し余裕を持つ */
+    
+    /* レスポンシブ対応: スマホなら85%、ただし最大350pxまで */
+    width: 85%;
+    max-width: 350px;
+    
+    height: 100%;
+    background-color: #ffffff;
+    color: #333;
+    transition: right 0.3s ease; /* スライドインのアニメーション */
+    
+    /* ヘッダー(80px)やボタンと被らないように余白調整 */
+    padding: 100px 20px 40px;
+    box-sizing: border-box;
+    
+    /* Header(100)より上、ボタン(200)より下 */
+    z-index: 150;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1); /* 影をつけて立体的に */
+}
+
+/* メニューが開いているとき */
+.menu.open {
+    right: 0;
+}
+
+/* --- ボタンのスタイル --- */
+.hamburger {
+    position: fixed;
+    /* スマホ・タブレット縦などの狭い画面用 */
+    top: 15px;  /* ヘッダーの高さ(80px)に合わせて中央寄せ */
+    right: 20px; /* 端すぎず、中央すぎない位置 */
+    
+    width: 60px;
+    height: 60px;
+    
+    cursor: pointer;
+    /* 最前面に配置 (Header:100, Menu:150 より上) */
+    z-index: 200;
+    
+    /* タップ時の青い背景を消す */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hamburger span {
+    display: block;
+    /* 9pxは太すぎてバツ印が崩れるため、5px程度推奨 */
+    height: 5px; 
+    width: 100%; /* 親要素(60px)に合わせるなら100% */
+    background-color: #333333;
+    
+    /* 線同士の間隔調整 */
+    margin: 8px 0; 
+    border-radius: 3px;
+    transition: 0.4s;
+}
+
+/* --- バツ印に変化するスタイル（計算済み） --- */
+.hamburger.active span:nth-child(1) {
+    /* (線の高さ + マージン) 分移動させて回転 */
+    transform: translateY(13px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px); /* 左に消える演出 */
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+}
+
+/* --- メニューリストのスタイル --- */
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* マージンは .menu の padding で制御済 */
+}
+
+.menu li {
+    padding: 0;
+    border-bottom: 1px solid #ddd; /* 線を少し薄く */
+}
+
+.menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    
+    /* 指で押しやすいように余白を広げる */
+    padding: 20px 10px;
+    font-size: 1.2rem;
+    /* フォントは変えない（normal） */
+    font-weight: normal; 
+}
+
+/* --- PC・大型タブレット（横持ち）用の調整 --- */
+@media screen and (min-width: 1079px) {
+    .hamburger {
+        /* ヘッダーが高くなる(220px/120px)のに合わせて位置調整 */
+        top: 30px; 
+        right: 50px; /* 画面が広いときは右余白を広げる */
+    }
+    
+    .menu {
+        padding-top: 150px; /* メニュー開始位置を下げる */
+        max-width: 400px;
+    }
+}

@@ -1,0 +1,23 @@
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #444;
+    padding: 8px 12px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
+.alert-danger {
+    color: white;
+    background-color: red;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+td form {
+    display: inline-block;
+    margin-right: 5px; /* ボタンの間に少し余白をつける */
+}

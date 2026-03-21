@@ -1,0 +1,96 @@
+/* partition.css */
+
+.partition-page {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.partition {
+    display: flex;
+    width: 100%;
+    
+    /* 【修正】初期値（スマホ・小タブレット）はヘッダー高さ(60px)に合わせる */
+    padding-top: var(--header-height); 
+    
+    height: 100vh;
+    height: 100dvh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.partition-left {
+    width: 75%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-right: 2px solid #999999;
+}
+
+.partition-left__inner {
+    height: 100%;
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+}
+
+.partition-right {
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.partition-right__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- メディアクエリ --- */
+
+/* PC・大型モニター (1079px以上) */
+@media screen and (min-width: 1079px) {
+    .partition {
+        /* 【修正】PC用ヘッダー高さ(90px)に合わせる */
+        padding-top: var(--header-height-lg);
+    }
+}
+
+/* 画面の高さが低い場合 (1045px以下) */
+@media screen and (max-height: 1045px) {
+    /* 必要であれば微調整。通常は変数のままでOKですが、
+       コンテンツが詰まりすぎる場合は少し足すなどしてください */
+    .partition {
+         padding-top: var(--header-height-lg);
+    }
+}
+
+/* スマホレイアウト */
+@media screen and (max-width: 768px) {
+    .partition {
+        flex-direction: column;
+        
+        /* 【修正】スマホ用ヘッダー高さ(60px)に合わせる */
+        padding-top: var(--header-height);
+        
+        padding-bottom: 0; 
+    }
+    .partition-left {
+        width: 100%;
+        height: 60%;
+        border-right: none;
+        border-bottom: 2px solid #999;
+    }
+    .partition-right {
+        width: 100%;
+        height: 40%;
+    }
+}

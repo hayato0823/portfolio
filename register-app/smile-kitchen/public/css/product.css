@@ -1,0 +1,196 @@
+/* product.css */
+
+/* --- 左画面（入力フォーム） --- */
+.input-container {
+    display: flex;
+    flex-direction: column;     
+    align-items: center;                       
+    justify-content: center;
+    width: 100%;
+    padding: 2rem; /* 余白を確保 */
+    box-sizing: border-box;
+    gap: 2rem; /* 要素間の隙間 (60px -> 2rem程度に) */
+}
+
+/* 入力エリアの各ブロック */
+.input-product-name, 
+.input-price {
+    width: 100%;
+    max-width: 500px; /* PCでは広がりすぎないように制限 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5rem; /* 24px相当 */
+    color: #333;
+}
+
+input {
+    /* 固定幅(350px)をやめ、親枠いっぱいにする */
+    width: 100%; 
+    height: 3.5rem; /* 56px相当 */
+    padding: 0 1rem;
+    box-sizing: border-box;
+    
+    font-size: 1.5rem;
+    border: 3px solid #369ae3;
+    border-radius: 10px;
+    outline: none;
+}
+
+input::placeholder {
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+/* バリデーション関連 */
+input:placeholder-shown {
+    border-color: #c1272d;
+}
+
+.error-message {
+    color: #c1272d;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    display: none;
+    font-weight: normal;
+}
+
+input:placeholder-shown + .error-message {
+    display: block;
+}
+
+/* 登録ボタン */
+.enter {
+    width: 100%;
+    max-width: 500px; /* 入力欄と幅を合わせる */
+    height: 4.5rem;   /* 72px相当 */
+    margin-top: 1rem;
+    
+    font-size: 1.8rem;
+    font-weight: normal;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #369ae3;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.enter:active {
+    opacity: 0.8;
+}
+
+/* --- 右画面（テーブルリスト） --- */
+.scroll-wrapper {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto; /* ここでスクロールさせる */
+    padding: 0; /* 余白は内側で調整 */
+    -webkit-overflow-scrolling: touch; /* iPadでのスクロールを滑らかに */
+}
+
+.scroll-wrapper table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    /* table-layout: fixed; ← 文字数が多いと切れるので、autoの方が安全な場合も */
+    table-layout: fixed; 
+}
+
+/* テーブルヘッダー固定 */
+.scroll-wrapper thead th {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    background: #c3e1f7;
+    color: #333333;
+    z-index: 10;
+    border-bottom: 2px solid #999999;
+    border-right: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ヘッダーの下に影 */
+}
+
+/* 列幅の調整 */
+th:nth-child(1), td:nth-child(1) { width: 50%; } /* 商品名 */
+th:nth-child(2), td:nth-child(2) { width: 25%; } /* 値段 */
+th:nth-child(3), td:nth-child(3) { width: 25%; } /* 操作 */
+
+.scroll-wrapper td {
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    
+    vertical-align: middle;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+tbody {
+    text-align: center;
+    color: #333333;
+}
+
+tbody tr:nth-child(even) { background-color: #fff; }
+tbody tr:nth-child(odd)  { background-color: #f9f9f9; }
+
+/* 削除ボタン */
+.edit {
+    height: auto;
+    padding: 0.5rem 1rem;
+    width: auto;
+    min-width: 80px;
+    
+    font-size: 1rem;
+    font-weight: normal;
+    border-radius: 6px;
+    border: none;
+    background-color: #fbb03b;
+    color: #333333;
+    cursor: pointer;
+}
+
+/* ハイライトアニメーション */
+.highlight {
+    animation: highlight-animation 2s ease-out;
+}
+
+@keyframes highlight-animation {
+    0% { background-color: rgb(255, 255, 180); }
+    100% { background-color: transparent; }
+}
+
+/* --- 大型画面用調整 --- */
+@media screen and (min-width: 1024px) {
+    h2 { font-size: 2rem; }
+    
+    input { 
+        height: 5rem; 
+        font-size: 2rem; 
+    }
+    
+    .enter { 
+        height: 6rem; 
+        font-size: 2.5rem; 
+    }
+    
+    .scroll-wrapper thead th { font-size: 1.8rem; }
+    .scroll-wrapper td { font-size: 1.6rem; }
+    
+    .edit {
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
