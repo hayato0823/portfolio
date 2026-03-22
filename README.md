@@ -29,7 +29,7 @@ php artisan key:generate
 
 # データベースのテーブル作成
 php artisan migrate
-
+使用方法
 1. アカウント作成
 最初に http://localhost:8080/register にアクセスし、新規ユーザー登録を行ってください。
 
